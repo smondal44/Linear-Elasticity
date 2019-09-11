@@ -1,6 +1,14 @@
-#Linear elasticity problem for circular precipitate of radious 20nm in the domain of 400*400;
-#Here elastic energy has also been incorporated int the total energy of the system;
-#then cahn hilliard equation for conserved order parameter has been solved.
+"""
+Phase field community hub developed by Center for Hierarchial Materials Design (CHiMaD) and the National Institute of 
+Standards and Technology (NIST) has published several problems along with standard solutions in order new implementations
+of phase field models can be benchmarked. In this work, we present the FEM based FEniCS implementation to solve the 
+Linear elasticity problem for circular precipitate of radious 20nm in the domain of 400*400. 
+This work has been completed during summer'2019 at MATERIALS AND PROCESS MODELLING LAB
+of IIT Bombay.
+Author: Shubhajit Mondala(a), Sushil Kumar(b), M.P. Gururajan(b)
+(a) Department of Minerals, Metallurgical and Materials Engineering, Indian Institute of Technology Bhubaneswar, Khurda 752050,India
+(b) Department of Metallurgical Engineering and Materials Science,Indian Institute of Technology Bombay, Powai, Mumbai 400076,India
+"""
 from __future__ import print_function
 from dolfin import *
 from fenics import *
@@ -109,7 +117,11 @@ def elasticE (eta):
       E = 0.5*inner(sigmar(u,eigen),strain)
       print(assemble(E*dx))  # priniting the elastic energy of the system at each time step
       return E     # returning the elastic energy
-#Specifying the solver specification to have control over the solver
+#Specifying the solver specification to have contr#;
+13
+#Here elastic energy has also been incorporated int the total energy of the system;
+14
+#then cahn hilliard equation for conserved order parameter has been solved.ol over the solver
 solver = NewtonSolver()
 solver.parameters["linear_solver"]="lu"
 solver.parameters["convergence_criterion"]="incremental"
